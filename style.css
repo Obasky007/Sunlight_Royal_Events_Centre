@@ -151,6 +151,26 @@
             border-bottom: 1px solid rgba(212, 175, 55, 0.1) !important;
         }
 
+        /* Mobile nav optimization */
+        @media (max-width: 640px) {
+            nav {
+                padding: 0.25rem 0;
+            }
+
+            nav .max-w-7xl {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+
+            #navbar .flex.justify-between {
+                gap: 0.5rem;
+            }
+
+            .font-display {
+                letter-spacing: 0;
+            }
+        }
+
         /* Mobile menu */
         .mobile-menu {
             transform: translateX(100%);
