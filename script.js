@@ -104,13 +104,11 @@ bookingForm.addEventListener('submit', function (e) {
     const phone = document.getElementById('formPhone').value.trim();
     const eventType = document.getElementById('formEventType').value;
     const date = document.getElementById('formDate').value;
-    const guests = document.getElementById('formGuests').value;
 
-    if (!name || !phone || !eventType || !date || !guests) {
+    if (!name || !phone || !eventType || !date) {
         showToast('Please fill in all fields.', 'error');
         return;
     }
-
 
     const dateObj = new Date(date + 'T00:00:00');
     const formattedDate = dateObj.toLocaleDateString('en-NG', {
@@ -125,8 +123,7 @@ bookingForm.addEventListener('submit', function (e) {
         `Name: ${name}\n` +
         `Phone: ${phone}\n` +
         `Event Type: ${eventType}\n` +
-        `Date: ${formattedDate}\n` +
-        `Expected Guests: ${guests}\n\n` +
+        `Date: ${formattedDate}\n\n` +
         `Please let me know if this date is available. Thank you!`;
 
     const encodedMessage = encodeURIComponent(message);
