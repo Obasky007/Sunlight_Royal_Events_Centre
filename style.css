@@ -39,6 +39,93 @@
             animation: shimmer 6s linear infinite;
         }
 
+        /* Elite menu button */
+        #menuBtn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #menuBtn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0) 0%, rgba(212, 175, 55, 0.05) 50%, rgba(212, 175, 55, 0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            border-radius: 0.5rem;
+        }
+
+        #menuBtn:hover::before {
+            opacity: 1;
+        }
+
+        #menuBtn svg line {
+            stroke-width: 2.5;
+            transform-origin: center;
+        }
+
+        #menuBtn:hover svg line:nth-child(1) {
+            animation: lineTop 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        #menuBtn:hover svg line:nth-child(2) {
+            animation: lineMiddle 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        #menuBtn:hover svg line:nth-child(3) {
+            animation: lineBottom 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        @keyframes lineTop {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-1px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes lineMiddle {
+            0% {
+                transform: scaleX(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scaleX(0.8);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: scaleX(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes lineBottom {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(1px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        #menuBtn:active {
+            transform: scale(0.92);
+        }
+
         /* Reveal animations */
         .reveal {
             opacity: 0;
@@ -154,20 +241,56 @@
         /* Mobile nav optimization */
         @media (max-width: 640px) {
             nav {
-                padding: 0.25rem 0;
+                padding: 0;
             }
 
             nav .max-w-7xl {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+
+            #navbar {
+                height: 3.5rem;
+            }
+
+            .mobile-menu {
+                padding-bottom: 0.5rem;
+            }
+
+            .mobile-menu a {
+                word-break: break-word;
+            }
+
+            html {
+                overflow-x: hidden;
+            }
+
+            body {
+                overflow-x: hidden;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #navbar {
+                padding: 0;
+            }
+
+            nav .max-w-7xl {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+
+            .mobile-menu .flex-1 {
                 padding-left: 0.75rem;
                 padding-right: 0.75rem;
             }
 
-            #navbar .flex.justify-between {
-                gap: 0.5rem;
+            .mobile-menu a {
+                font-size: 1.125rem;
             }
 
-            .font-display {
-                letter-spacing: 0;
+            #navbar .flex {
+                gap: 0;
             }
         }
 
@@ -179,6 +302,18 @@
 
         .mobile-menu.open {
             transform: translateX(0);
+        }
+
+        @media (max-width: 640px) {
+            .mobile-menu .flex-1 {
+                padding-top: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mobile-menu .flex-1 {
+                padding-top: 1.5rem;
+            }
         }
 
         /* Testimonial card hover */
